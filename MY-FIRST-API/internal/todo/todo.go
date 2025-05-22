@@ -1,6 +1,6 @@
 package todo
 
-//service layer
+//service layer or business logic
 
 // todos []string , here todos start from lowercase in GO, it is private.
 // if i change it to Todos so it makes it Public so i can access it without any error.
