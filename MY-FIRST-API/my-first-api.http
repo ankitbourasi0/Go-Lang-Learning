@@ -1,11 +1,11 @@
 ### GET request to example server
-GET http://localhost:8080/all-todos
+GET http://localhost:8080/todo
 
 ### POST request: add a todo
 POST localhost:8080/todo
 
 {
-"item" : "get grocerries"
+"item" : "get shopping"
 },
 
 
