@@ -42,5 +42,32 @@ func main() {
 	via underlying array, It grows Until element reached 1024, after this capacity increased by 1.25x
 	*/
 
-	fmt.Printf("Slice %v, Length: %d, Capacity of Slice: %d", appendElementSlice, len(appendElementSlice), cap(appendElementSlice)) //Slice [1 2 3 4 5 20 21], Length: 7, Capacity of Slice: 10
+	fmt.Printf("Slice %v, Length: %d, Capacity of Slice: %d\n", appendElementSlice, len(appendElementSlice), cap(appendElementSlice)) //Slice [1 2 3 4 5 20 21], Length: 7, Capacity of Slice: 10
+
+	//Appending One slice to Another
+	slices1 := []int{1, 2, 3}
+	slices2 := []int{4, 5, 6}
+	slices3 := append(slices1, slices2...)
+	fmt.Println(slices3) //[1 2 3 4 5 6]
+
+	//Change the length of a Slice
+	arr := [5]int{1, 2, 3, 4, 5}
+	Sliced := arr[2:4]
+	fmt.Println("Original Slice: ", Sliced)
+	Sliced = arr[1:5]
+	fmt.Println("New Slice: ", Sliced)
+
+	//💡Memory Efficiency
+	//When using slices, Go loads all the underlying element in the memory,
+	//If the array is too Large, & You need only few elements.
+	//It is better to copy those elements using `copy()` fn.
+
+	//Syntax: copy(destination, source)
+	largeSlice := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25}
+	fmt.Println("Large Slice: ", largeSlice)
+	neededSliceLength := largeSlice[5 : len(largeSlice)-10]
+	neededElement := make([]int, len(neededSliceLength))
+	fmt.Printf("Needed Slice:%v, %d,  %d\n", neededSliceLength, len(neededSliceLength), cap(neededSliceLength))
+	copy(neededElement, neededSliceLength)
+	fmt.Printf("New Slice:%v %d %d\n ", neededElement, len(neededElement), cap(neededElement))
 }
